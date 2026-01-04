@@ -1,0 +1,1890 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI in 2026: What Doctors Need to Know</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css" id="theme">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/monokai.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Mol* for 3D protein viewer -->
+    <link rel="stylesheet" type="text/css" href="https://www.ebi.ac.uk/pdbe/pdb-component-library/css/pdbe-molstar-3.1.3.css">
+    <script type="text/javascript" src="https://www.ebi.ac.uk/pdbe/pdb-component-library/js/pdbe-molstar-plugin-3.1.3.js"></script>
+    <style>
+        :root {
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --gradient-4: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            --gradient-5: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            --gradient-dark: linear-gradient(135deg, #0c1445 0%, #1a1a2e 50%, #16213e 100%);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --accent-blue: #4facfe;
+            --accent-purple: #667eea;
+            --accent-pink: #f093fb;
+            --accent-green: #43e97b;
+            --accent-orange: #fee140;
+        }
+
+        .reveal {
+            font-family: 'Inter', sans-serif;
+            background: var(--gradient-dark);
+        }
+
+        .reveal h1, .reveal h2, .reveal h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            text-transform: none;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .reveal h1 {
+            font-size: 3.5em;
+            background: var(--gradient-3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .reveal h2 {
+            font-size: 2.2em;
+            color: #fff;
+        }
+
+        .reveal .slides section {
+            text-align: left;
+            padding-bottom: 80px !important; /* Space for navigation controls */
+            box-sizing: border-box;
+        }
+
+        .reveal .slides section.center {
+            text-align: center;
+        }
+
+        /* Reduce sizes to fit content better */
+        .reveal h1 {
+            font-size: 2.5em !important;
+        }
+
+        .reveal h2 {
+            font-size: 1.4em !important;
+            margin-bottom: 12px !important;
+        }
+
+        .reveal h3 {
+            font-size: 1em !important;
+            margin-bottom: 8px !important;
+        }
+
+        .reveal h4 {
+            font-size: 0.9em !important;
+            margin-bottom: 6px !important;
+        }
+
+        .reveal .slides {
+            font-size: 0.75em;
+        }
+
+        .reveal ul, .reveal ol {
+            margin-bottom: 6px !important;
+        }
+
+        .reveal li {
+            margin-bottom: 3px !important;
+            line-height: 1.4 !important;
+        }
+
+        /* Modern Glass Cards */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            padding: 8px 12px;
+            margin: 5px 0;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .glass-card.blue { border-left: 4px solid var(--accent-blue); }
+        .glass-card.purple { border-left: 4px solid var(--accent-purple); }
+        .glass-card.pink { border-left: 4px solid var(--accent-pink); }
+        .glass-card.green { border-left: 4px solid var(--accent-green); }
+        .glass-card.orange { border-left: 4px solid var(--accent-orange); }
+        .glass-card.red { border-left: 4px solid #f5576c; }
+
+        /* Gradient Text */
+        .gradient-text {
+            background: var(--gradient-3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gradient-text.pink {
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+
+        .gradient-text.green {
+            background: var(--gradient-4);
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+
+        /* Modern Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .stat-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            padding: 8px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(79, 172, 254, 0.2);
+        }
+
+        .stat-number {
+            font-size: 1.4em;
+            font-weight: 700;
+            background: var(--gradient-3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 0.75em;
+            color: rgba(255, 255, 255, 0.7);
+            margin-top: 2px;
+        }
+
+        /* Modern Table */
+        .modern-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 16px;
+            overflow: hidden;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+        }
+
+        .modern-table th {
+            background: rgba(79, 172, 254, 0.2);
+            padding: 18px 20px;
+            font-weight: 600;
+            text-align: left;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .modern-table td {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .modern-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .modern-table tr:hover td {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* Two Column Modern */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            align-items: start;
+        }
+
+        /* Reduce all top margins globally */
+        .reveal .slides section .two-col,
+        .reveal .slides section .stats-grid,
+        .reveal .slides section .feature-row,
+        .reveal .slides section .comparison-grid,
+        .reveal .slides section .timeline {
+            margin-top: 10px !important;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--gradient-3);
+            border-radius: 3px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 18px;
+            padding-left: 18px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -33px;
+            top: 8px;
+            width: 12px;
+            height: 12px;
+            background: var(--accent-blue);
+            border-radius: 50%;
+            box-shadow: 0 0 20px var(--accent-blue);
+        }
+
+        .timeline-year {
+            font-weight: 700;
+            color: var(--accent-blue);
+            font-size: 1.1em;
+        }
+
+        /* Animated Background Shapes */
+        .bg-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .bg-shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.3;
+        }
+
+        .bg-shape.blue {
+            width: 400px;
+            height: 400px;
+            background: var(--accent-blue);
+            top: -100px;
+            right: -100px;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .bg-shape.purple {
+            width: 300px;
+            height: 300px;
+            background: var(--accent-purple);
+            bottom: -50px;
+            left: -50px;
+            animation: float 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(30px, 30px); }
+        }
+
+        /* Icon Badges */
+        .icon-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            font-size: 1.5em;
+            margin-right: 15px;
+        }
+
+        .icon-badge.blue { background: rgba(79, 172, 254, 0.2); }
+        .icon-badge.green { background: rgba(67, 233, 123, 0.2); }
+        .icon-badge.pink { background: rgba(240, 147, 251, 0.2); }
+        .icon-badge.orange { background: rgba(254, 225, 64, 0.2); }
+        .icon-badge.red { background: rgba(245, 87, 108, 0.2); }
+
+        /* Progress bars */
+        .progress-bar {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 1s ease;
+        }
+
+        .progress-fill.blue { background: var(--gradient-3); }
+        .progress-fill.green { background: var(--gradient-4); }
+        .progress-fill.pink { background: var(--gradient-2); }
+
+        /* Comparison Cards */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .comparison-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 8px 12px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .comparison-card.good {
+            border-top: 4px solid var(--accent-green);
+        }
+
+        .comparison-card.bad {
+            border-top: 4px solid #f5576c;
+        }
+
+        /* 3D Viewer Container */
+        .viewer-container {
+            width: 100%;
+            height: 250px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            background: #000;
+        }
+
+        /* Constrain Mol* viewer to its container */
+        #proteinViewer {
+            position: relative !important;
+        }
+
+        #proteinViewer .msp-plugin {
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+        }
+
+        #proteinViewer .msp-plugin-content,
+        #proteinViewer .msp-layout-static,
+        #proteinViewer .msp-layout-main,
+        #proteinViewer .msp-viewport,
+        #proteinViewer .msp-viewport-host3d {
+            position: absolute !important;
+            width: 100% !important;
+            height: 100% !important;
+        }
+
+        /* Image with glow effect */
+        .glow-image {
+            border-radius: 16px;
+            box-shadow: 0 0 60px rgba(79, 172, 254, 0.3);
+        }
+
+        /* Pill badges */
+        .pill {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 500;
+            margin: 5px;
+        }
+
+        .pill.blue { background: rgba(79, 172, 254, 0.2); color: var(--accent-blue); }
+        .pill.green { background: rgba(67, 233, 123, 0.2); color: var(--accent-green); }
+        .pill.pink { background: rgba(240, 147, 251, 0.2); color: var(--accent-pink); }
+        .pill.orange { background: rgba(254, 225, 64, 0.2); color: var(--accent-orange); }
+
+        /* Small text */
+        .small-text {
+            font-size: 0.65em;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* List styling */
+        .reveal ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .reveal ul li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 15px;
+        }
+
+        .reveal ul li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);
+            font-weight: bold;
+        }
+
+        /* Feature cards horizontal */
+        .feature-row {
+            display: flex;
+            gap: 8px;
+            margin: 10px 0;
+        }
+
+        .feature-card {
+            flex: 1;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 1.4em;
+            margin-bottom: 3px;
+        }
+
+        /* Nobel badge */
+        .nobel-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #ffd700 0%, #ffaa00 100%);
+            color: #000;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-weight: 700;
+            font-size: 1em;
+            box-shadow: 0 4px 20px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Animated counter */
+        .big-number {
+            font-size: 2.5em;
+            font-weight: 700;
+            background: var(--gradient-3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+        }
+
+        /* Quote style */
+        .quote {
+            font-style: italic;
+            font-size: 1.1em;
+            border-left: 4px solid var(--accent-purple);
+            padding-left: 20px;
+            margin: 20px 0;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .quote-author {
+            font-style: normal;
+            font-size: 0.7em;
+            color: var(--accent-blue);
+            margin-top: 10px;
+        }
+
+        /* Slide specific backgrounds */
+        .slide-alphafold {
+            background: linear-gradient(135deg, #1a1a4a 0%, #2d1b4e 50%, #1a2a5c 100%) !important;
+        }
+
+        /* Responsive video container */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 0 60px rgba(79, 172, 254, 0.2);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <!-- ============================================ -->
+            <!-- SLIDE 1: TITLE -->
+            <!-- ============================================ -->
+            <section class="center">
+                <div class="bg-shapes">
+                    <div class="bg-shape blue"></div>
+                    <div class="bg-shape purple"></div>
+                </div>
+                <h1 style="font-size: 5em; margin-bottom: 0;">AI Before and After</h1>
+                <p style="margin-top: 40px; font-size: 2em; color: rgba(255,255,255,0.8); font-weight: 400;">Again?</p>
+                <p style="margin-top: 40px; font-size: 1.4em; color: rgba(255,255,255,0.6); font-weight: 300; letter-spacing: 0.02em;">2026.01.06 by YKShim</p>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- SLIDE 2: SIMULATION QUESTION -->
+            <!-- ============================================ -->
+            <section class="center">
+                <h1 style="font-size: 3.5em; margin-bottom: 0;">This World is Simulation?</h1>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- SLIDE 3: HIDDEN FIGURES -->
+            <!-- ============================================ -->
+            <section>
+                <h2>The <span class="gradient-text">Hidden Figures</span> Lesson</h2>
+                <div class="two-col" style="margin-top: 20px;">
+                    <div>
+                        <div class="glass-card blue" style="padding: 15px; margin: 8px 0;">
+                            <p style="font-size: 1em; line-height: 1.5; margin: 0;">In the 1960s, NASA employed <strong>"human computers"</strong> to calculate trajectories.</p>
+                            <p style="margin-top: 12px; margin-bottom: 0; color: rgba(255,255,255,0.7); font-size: 0.9em;">Electronic computers replaced them — not because humans were bad, but because <strong style="color: var(--accent-blue);">tools evolved</strong>.</p>
+                        </div>
+                        <div class="" style="margin-top: 15px; display: flex; align-items: center; gap: 15px;">
+                            <img src="hidden_figures.jpg"
+                                 alt="Hidden Figures Book Cover"
+                                 style="height: 360px; width: auto; flex-shrink: 0; border-radius: 8px; box-shadow: 0 5px 20px rgba(0,0,0,0.4);">
+                            <p style="margin: 0; font-size: 0.85em; color: rgba(255,255,255,0.8);">2016 film about NASA's "human computers" who calculated space missions by hand.</p>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="timeline" style="padding-left: 20px;">
+                            <div class="timeline-item" style="margin-bottom: 12px; padding-left: 15px; display: flex; align-items: center; gap: 10px;">
+                                <div>
+                                    <div class="timeline-year" style="font-size: 0.8em;">3000 BC</div>
+                                    <div style="font-size: 0.9em;">Abacus</div>
+                                </div>
+                                <img src="abacus.jpg" alt="Abacus" style="height: 80px; width: auto;">
+                            </div>
+                            <div class="timeline-item" style="margin-bottom: 12px; padding-left: 15px; display: flex; align-items: center; gap: 10px;">
+                                <div>
+                                    <div class="timeline-year" style="font-size: 0.8em;">1970s</div>
+                                    <div style="font-size: 0.9em;">Electronic Calculator</div>
+                                </div>
+                                <img src="calculator.jpg" alt="Calculator" style="height: 80px; width: auto;">
+                            </div>
+                            <div class="timeline-item" style="margin-bottom: 12px; padding-left: 15px; display: flex; align-items: center; gap: 10px;">
+                                <div>
+                                    <div class="timeline-year" style="font-size: 0.8em;">1990s</div>
+                                    <div style="font-size: 0.9em;">Personal Computer</div>
+                                </div>
+                                <img src="computer.jpg" alt="Computer" style="height: 80px; width: auto;">
+                            </div>
+                            <div class="timeline-item" style="margin-bottom: 12px; padding-left: 15px; display: flex; align-items: center; gap: 10px;">
+                                <div>
+                                    <div class="timeline-year" style="font-size: 0.8em;">2020s</div>
+                                    <div style="color: var(--accent-blue); font-weight: 600; font-size: 0.9em;">Artificial Intelligence</div>
+                                </div>
+                                <img src="ai_chip.jpg" alt="AI" style="height: 80px; width: auto;">
+                            </div>
+                        </div>
+                        <div class="glass-card orange" style="padding: 12px; margin-top: 10px; text-align: center;">
+                            <strong style="font-size: 0.95em;">Each transition was resisted, then became indispensable.</strong>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- SLIDE 3: WHAT IS AI -->
+            <!-- ============================================ -->
+            <section>
+                <h2>What is <span class="gradient-text">"AI"</span> Today?</h2>
+                <div class="two-col" style="margin-top: 30px;">
+                    <div>
+                        <ul>
+                            <li class=""><strong style="color: #f5576c;">Not</strong> science fiction robots</li>
+                            <li class=""><strong>Large Language Models (LLMs)</strong> trained on massive text data</li>
+                            <li class="">Understands context, generates text, analyzes patterns</li>
+                        </ul>
+                        <div class="glass-card green" style="margin-top: 30px;">
+                            <p><strong>💡 Simple explanation:</strong></p>
+                            <p style="color: rgba(255,255,255,0.8);">Like autocomplete on your phone — but trained on virtually <em>all of human knowledge</em>.</p>
+                        </div>
+                    </div>
+                    <div class="">
+                        <p style="font-size: 0.85em; margin-bottom: 12px; color: rgba(255,255,255,0.8); text-align: center;"><strong>Time to Reach 100 Million Users</strong></p>
+                        <!-- Horizontal Bar Chart - Journal Style -->
+                        <div style="background: rgba(255,255,255,0.03); border-radius: 8px; padding: 20px 20px 15px 20px;">
+                            <!-- Bar items -->
+                            <div style="display: flex; flex-direction: column; gap: 12px;">
+                                <!-- ChatGPT -->
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <span style="width: 70px; font-size: 0.7em; text-align: right; color: rgba(255,255,255,0.9);">ChatGPT</span>
+                                    <div style="flex: 1; height: 22px; background: rgba(255,255,255,0.1); border-radius: 4px; position: relative;">
+                                        <div style="width: 1.7%; min-width: 24px; height: 100%; background: linear-gradient(90deg, #10a37f, #1a7f5a); border-radius: 4px;"></div>
+                                    </div>
+                                    <span style="width: 55px; font-size: 0.65em; color: #10a37f; font-weight: 600;">2 months</span>
+                                </div>
+                                <!-- TikTok -->
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <span style="width: 70px; font-size: 0.7em; text-align: right; color: rgba(255,255,255,0.9);">TikTok</span>
+                                    <div style="flex: 1; height: 22px; background: rgba(255,255,255,0.1); border-radius: 4px; position: relative;">
+                                        <div style="width: 7.5%; min-width: 30px; height: 100%; background: linear-gradient(90deg, #ff0050, #c7003d); border-radius: 4px;"></div>
+                                    </div>
+                                    <span style="width: 55px; font-size: 0.65em; color: #ff0050;">9 months</span>
+                                </div>
+                                <!-- Instagram -->
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <span style="width: 70px; font-size: 0.7em; text-align: right; color: rgba(255,255,255,0.9);">Instagram</span>
+                                    <div style="flex: 1; height: 22px; background: rgba(255,255,255,0.1); border-radius: 4px; position: relative;">
+                                        <div style="width: 25%; height: 100%; background: linear-gradient(90deg, #E1306C, #a82350); border-radius: 4px;"></div>
+                                    </div>
+                                    <span style="width: 55px; font-size: 0.65em; color: #E1306C;">2.5 years</span>
+                                </div>
+                                <!-- Spotify -->
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <span style="width: 70px; font-size: 0.7em; text-align: right; color: rgba(255,255,255,0.9);">Spotify</span>
+                                    <div style="flex: 1; height: 22px; background: rgba(255,255,255,0.1); border-radius: 4px; position: relative;">
+                                        <div style="width: 35%; height: 100%; background: linear-gradient(90deg, #1db954, #158a3f); border-radius: 4px;"></div>
+                                    </div>
+                                    <span style="width: 55px; font-size: 0.65em; color: #1db954;">3.5 years</span>
+                                </div>
+                                <!-- Netflix -->
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <span style="width: 70px; font-size: 0.7em; text-align: right; color: rgba(255,255,255,0.9);">Netflix</span>
+                                    <div style="flex: 1; height: 22px; background: rgba(255,255,255,0.1); border-radius: 4px; position: relative;">
+                                        <div style="width: 100%; height: 100%; background: linear-gradient(90deg, #e50914, #a3060e); border-radius: 4px;"></div>
+                                    </div>
+                                    <span style="width: 55px; font-size: 0.65em; color: #e50914;">10 years</span>
+                                </div>
+                            </div>
+                            <!-- X-axis scale -->
+                            <div style="display: flex; justify-content: space-between; margin-top: 10px; padding-left: 80px; padding-right: 55px;">
+                                <span style="font-size: 0.5em; color: rgba(255,255,255,0.4);">0</span>
+                                <span style="font-size: 0.5em; color: rgba(255,255,255,0.4);">2.5yr</span>
+                                <span style="font-size: 0.5em; color: rgba(255,255,255,0.4);">5yr</span>
+                                <span style="font-size: 0.5em; color: rgba(255,255,255,0.4);">7.5yr</span>
+                                <span style="font-size: 0.5em; color: rgba(255,255,255,0.4);">10yr</span>
+                            </div>
+                        </div>
+                        <p style="font-size: 0.6em; margin-top: 8px; color: rgba(255,255,255,0.5); text-align: center;">ChatGPT achieved in 2 months what took Netflix 10 years</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- SLIDE 3.5: AI vs AGI -->
+            <!-- ============================================ -->
+            <section>
+                <h2><span class="gradient-text">AI</span> vs <span class="gradient-text" style="background: var(--gradient-2); -webkit-background-clip: text; background-clip: text;">AGI</span></h2>
+                <p style="text-align: center; margin-bottom: 15px; color: rgba(255,255,255,0.7); font-size: 0.9em;">Understanding the Critical Difference</p>
+
+                <div class="two-col" style="gap: 15px;">
+                    <div class="glass-card blue" style="padding: 10px 12px;">
+                        <h3 style="color: var(--accent-blue); margin-bottom: 8px; font-size: 1em;">🤖 AI (Narrow AI) — What we have today</h3>
+                        <ul style="font-size: 0.8em; line-height: 1.6; margin: 0;">
+                            <li class="">Excels at <strong>specific tasks</strong></li>
+                            <li class="">Pattern recognition & prediction</li>
+                            <li class="">No true understanding or consciousness</li>
+                            <li class="">Examples: ChatGPT, AlphaFold</li>
+                        </ul>
+                    </div>
+                    <div class="glass-card pink" style="padding: 10px 12px;">
+                        <h3 style="color: var(--accent-pink); margin-bottom: 8px; font-size: 1em;">🧠 AGI — Hypothetical future</h3>
+                        <ul style="font-size: 0.8em; line-height: 1.6; margin: 0;">
+                            <li class="">Human-level reasoning across <strong>all domains</strong></li>
+                            <li class="">True understanding & learning</li>
+                            <li class="">Self-improvement capability</li>
+                            <li class="">Status: <strong style="color: #f5576c;">Does NOT exist yet</strong></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="glass-card orange" style="margin-top: 12px; text-align: center; padding: 10px;">
+                    <p style="font-size: 0.9em; margin: 0;"><strong>⚠️ Key Insight:</strong> Current AI = powerful but narrow <em>tools</em>, not thinking beings. AGI timeline: 5-50+ years.</p>
+                </div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- SLIDE 4: MAJOR AI TOOLS -->
+            <!-- ============================================ -->
+            <section>
+                <h2>Major AI Tools in <span class="gradient-text">2026</span></h2>
+                <div class="feature-row" style="margin-top: 30px;">
+                    <div class="feature-card">
+                        <img src="chatgpt_logo.png" alt="ChatGPT" style="width: 50px; height: 50px; margin: 0 auto; display: block;">
+                        <h4 style="margin: 10px 0 3px; font-size: 0.9em;">ChatGPT</h4>
+                        <p class="small-text" style="font-size: 0.7em;">OpenAI • Most popular</p>
+                    </div>
+                    <div class="feature-card">
+                        <img src="claude_logo.png" alt="Claude" style="width: 50px; height: 50px; margin: 0 auto; display: block; object-fit: contain;">
+                        <h4 style="margin: 10px 0 3px; font-size: 0.9em;">Claude</h4>
+                        <p class="small-text" style="font-size: 0.7em;">Anthropic • Reasoning</p>
+                    </div>
+                    <div class="feature-card">
+                        <img src="gemini_logo.png" alt="Gemini" style="width: 50px; height: 50px; margin: 0 auto; display: block; object-fit: contain;">
+                        <h4 style="margin: 10px 0 3px; font-size: 0.9em;">Gemini</h4>
+                        <p class="small-text" style="font-size: 0.7em;">Google • Integrated</p>
+                    </div>
+                    <div class="feature-card">
+                        <img src="copilot_logo.png" alt="Copilot" style="width: 50px; height: 50px; margin: 0 auto; display: block;">
+                        <h4 style="margin: 10px 0 3px; font-size: 0.9em;">Copilot</h4>
+                        <p class="small-text" style="font-size: 0.7em;">Microsoft • Office</p>
+                    </div>
+                </div>
+                <div class="feature-row" style="margin-top: 15px;">
+                    <div class="feature-card">
+                        <img src="perplexity_logo.png" alt="Perplexity" style="width: 50px; height: 50px; margin: 0 auto; display: block; object-fit: contain;">
+                        <h4 style="margin: 10px 0 3px; font-size: 0.9em;">Perplexity</h4>
+                        <p class="small-text" style="font-size: 0.7em;">Research with citations</p>
+                    </div>
+                    <div class="feature-card">
+                        <img src="grok_logo.svg" alt="Grok" style="width: 50px; height: 50px; margin: 0 auto; display: block; object-fit: contain;">
+                        <h4 style="margin: 10px 0 3px; font-size: 0.9em;">Grok</h4>
+                        <p class="small-text" style="font-size: 0.7em;">xAI • Real-time X data</p>
+                    </div>
+                    <div class="feature-card">
+                        <img src="deepseek_logo.png" alt="DeepSeek" style="width: 50px; height: 50px; margin: 0 auto; display: block; object-fit: contain;">
+                        <h4 style="margin: 10px 0 3px; font-size: 0.9em;">DeepSeek</h4>
+                        <p class="small-text" style="font-size: 0.7em;">China • Open source</p>
+                    </div>
+                    <div class="feature-card">
+                        <img src="meta_logo.png" alt="Meta AI" style="width: 50px; height: 50px; margin: 0 auto; display: block; object-fit: contain;">
+                        <h4 style="margin: 10px 0 3px; font-size: 0.9em;">Meta AI</h4>
+                        <p class="small-text" style="font-size: 0.7em;">Llama • Free & open</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- SLIDE 5: WHAT AI CAN DO -->
+            <!-- ============================================ -->
+            <section>
+                <h2>What AI Can Do <span class="gradient-text green">Well</span></h2>
+                <div class="stats-grid" style="margin-top: 40px;">
+                    <div class="stat-card">
+                        <div class="feature-icon">📄</div>
+                        <strong>Summarize</strong>
+                        <p class="small-text">Long documents, research papers, patient histories</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="feature-icon">✍️</div>
+                        <strong>Draft</strong>
+                        <p class="small-text">Communications, letters, reports, documentation</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="feature-icon">🎓</div>
+                        <strong>Explain</strong>
+                        <p class="small-text">Complex topics in simple terms for patients</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="feature-icon">🌐</div>
+                        <strong>Translate</strong>
+                        <p class="small-text">Languages instantly with medical context</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="feature-icon">🔍</div>
+                        <strong>Search</strong>
+                        <p class="small-text">Synthesize information from multiple sources</p>
+                    </div>
+                    <div class="stat-card">
+                        <div class="feature-icon">⚙️</div>
+                        <strong>Automate</strong>
+                        <p class="small-text">Repetitive tasks, data entry, scheduling</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- SLIDE 6: MEDICAL APPLICATIONS -->
+            <!-- ============================================ -->
+            <section>
+                <h2>Medical-Specific AI <span class="gradient-text">Applications</span></h2>
+                <div class="two-col" style="margin-top: 20px; gap: 15px;">
+                    <div>
+                        <div class="glass-card blue" style="display: flex; align-items: center; padding: 8px 12px;">
+                            <span class="icon-badge blue" style="width: 40px; height: 40px; font-size: 1.2em;">📚</span>
+                            <div>
+                                <strong>Literature Review</strong>
+                                <p class="small-text" style="margin: 0;">Summarize 100s of papers in minutes</p>
+                            </div>
+                        </div>
+                        <div class="glass-card purple" style="display: flex; align-items: center; padding: 8px 12px;">
+                            <span class="icon-badge pink" style="width: 40px; height: 40px; font-size: 1.2em;">🩺</span>
+                            <div>
+                                <strong>Differential Diagnosis</strong>
+                                <p class="small-text" style="margin: 0;">Brainstorming tool (not replacement)</p>
+                            </div>
+                        </div>
+                        <div class="glass-card green" style="display: flex; align-items: center; padding: 8px 12px;">
+                            <span class="icon-badge green" style="width: 40px; height: 40px; font-size: 1.2em;">📝</span>
+                            <div>
+                                <strong>Patient Education</strong>
+                                <p class="small-text" style="margin: 0;">Generate materials at any reading level</p>
+                            </div>
+                        </div>
+                        <div class="glass-card orange" style="display: flex; align-items: center; padding: 8px 12px;">
+                            <span class="icon-badge orange" style="width: 40px; height: 40px; font-size: 1.2em;">📋</span>
+                            <div>
+                                <strong>Administrative Tasks</strong>
+                                <p class="small-text" style="margin: 0;">Documentation, coding, referrals</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="glass-card pink" style="display: flex; align-items: center; padding: 8px 12px;">
+                            <span class="icon-badge pink" style="width: 40px; height: 40px; font-size: 1.2em;">🔬</span>
+                            <div>
+                                <strong>Medical Imaging</strong>
+                                <p class="small-text" style="margin: 0;">Specialized AI for radiology, pathology</p>
+                            </div>
+                        </div>
+                        <div class="glass-card" style="display: flex; align-items: center; padding: 8px 12px; border-left: 4px solid #ea4335;">
+                            <span class="icon-badge" style="width: 40px; height: 40px; font-size: 1.2em; background: rgba(234, 67, 53, 0.2);">🎧</span>
+                            <div>
+                                <strong>NotebookLM</strong> <span class="small-text">(Google)</span>
+                                <p class="small-text" style="margin: 0;">Upload papers → AI podcast summaries</p>
+                            </div>
+                        </div>
+                        <div class="glass-card" style="display: flex; align-items: center; padding: 8px 12px; border-left: 4px solid #20b8cd;">
+                            <span class="icon-badge" style="width: 40px; height: 40px; font-size: 1.2em; background: rgba(32, 184, 205, 0.2);">🔍</span>
+                            <div>
+                                <strong>Perplexity</strong>
+                                <p class="small-text" style="margin: 0;">Research with citations & sources</p>
+                            </div>
+                        </div>
+                        <div class="glass-card blue" style="display: flex; align-items: center; padding: 8px 12px;">
+                            <span class="icon-badge blue" style="width: 40px; height: 40px; font-size: 1.2em;">💊</span>
+                            <div>
+                                <strong>Drug Interactions</strong>
+                                <p class="small-text" style="margin: 0;">Check complex medication combinations</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- SLIDE 6.5: NOTEBOOKLM EXAMPLE -->
+            <!-- ============================================ -->
+            <section>
+                <h2><span class="gradient-text" style="background: linear-gradient(135deg, #ea4335, #fbbc05); -webkit-background-clip: text; background-clip: text;">NotebookLM</span> in Action</h2>
+                <p style="text-align: center; margin-bottom: 20px; color: rgba(255,255,255,0.7); font-size: 0.85em;">Google's AI Research Assistant - Turn Papers into Podcasts</p>
+
+                <div class="two-col" style="gap: 20px;">
+                    <div>
+                        <div class="glass-card" style="border-left: 4px solid #ea4335; padding: 12px;">
+                            <h4 style="margin-top: 0; color: #ea4335;">📥 Step 1: Upload Sources</h4>
+                            <ul style="font-size: 0.85em; margin: 0;">
+                                <li>Upload PDFs, research papers, guidelines</li>
+                                <li>Paste URLs or Google Docs</li>
+                                <li>Up to 50 sources per notebook</li>
+                            </ul>
+                        </div>
+                        <div class="glass-card" style="border-left: 4px solid #fbbc05; padding: 12px; margin-top: 10px;">
+                            <h4 style="margin-top: 0; color: #fbbc05;">💬 Step 2: Ask Questions</h4>
+                            <ul style="font-size: 0.85em; margin: 0;">
+                                <li>"Summarize key findings"</li>
+                                <li>"Compare treatment protocols"</li>
+                                <li>"What are the limitations?"</li>
+                            </ul>
+                        </div>
+                        <div class="glass-card" style="border-left: 4px solid #34a853; padding: 12px; margin-top: 10px;">
+                            <h4 style="margin-top: 0; color: #34a853;">🎧 Step 3: Generate Audio</h4>
+                            <ul style="font-size: 0.85em; margin: 0;">
+                                <li>Creates AI podcast discussion</li>
+                                <li>Two hosts explain your sources</li>
+                                <li>Listen during commute</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="glass-card blue" style="padding: 15px;">
+                            <h4 style="margin-top: 0; color: var(--accent-blue);">🏥 Medical Use Case</h4>
+                            <p style="font-size: 0.85em; margin-bottom: 10px;">Upload 10 papers on a rare condition:</p>
+                            <div style="background: rgba(0,0,0,0.3); border-radius: 8px; padding: 10px; font-family: monospace; font-size: 0.75em;">
+                                <p style="margin: 0; color: #4facfe;">"What's the current consensus on treatment for Wilson's disease in pediatric patients?"</p>
+                            </div>
+                            <p style="font-size: 0.8em; margin-top: 10px; color: rgba(255,255,255,0.7);">→ Get synthesized answer with citations to your uploaded papers</p>
+                        </div>
+                        <div class="glass-card orange" style="padding: 12px; margin-top: 10px;">
+                            <h4 style="margin-top: 0; color: var(--accent-orange);">⚠️ Important Notes</h4>
+                            <ul style="font-size: 0.8em; margin: 0;">
+                                <li><strong>Free to use</strong> with Google account</li>
+                                <li>Answers grounded in YOUR sources only</li>
+                                <li>Still verify critical information</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- SLIDE 7: VIBE CODING -->
+            <!-- ============================================ -->
+            <section>
+                <h2>The Rise of <span class="gradient-text" style="background: var(--gradient-5); -webkit-background-clip: text; background-clip: text;">Vibe Coding</span></h2>
+                <p style="text-align: center; margin-bottom: 10px; color: rgba(255,255,255,0.7); font-size: 0.75em;">Coined by Andrej Karpathy (OpenAI Co-founder, Tesla AI Director) - Feb 2025</p>
+
+                <!-- Compact Visual Flow Comparison -->
+                <div style="display: flex; justify-content: center; gap: 150px; margin-bottom: 12px;">
+                    <!-- Traditional Coding -->
+                    <div style="text-align: center; flex: 1; max-width: 480px;">
+                        <p style="font-size: 0.65em; color: rgba(255,150,150,0.8); margin-bottom: 4px; font-weight: 600;">❌ Traditional</p>
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 3px;">
+                            <span style="background: rgba(255,100,100,0.2); border: 1px solid rgba(255,100,100,0.4); border-radius: 6px; padding: 3px 6px; font-size: 0.6em;">💡 Idea</span>
+                            <span style="color: rgba(255,255,255,0.3); font-size: 0.65em;">→</span>
+                            <span style="background: rgba(255,100,100,0.2); border: 1px solid rgba(255,100,100,0.4); border-radius: 6px; padding: 3px 6px; font-size: 0.6em;">📚 Learn</span>
+                            <span style="color: rgba(255,255,255,0.3); font-size: 0.65em;">→</span>
+                            <span style="background: rgba(255,100,100,0.2); border: 1px solid rgba(255,100,100,0.4); border-radius: 6px; padding: 3px 6px; font-size: 0.6em;">⌨️ Code</span>
+                            <span style="color: rgba(255,255,255,0.3); font-size: 0.65em;">→</span>
+                            <span style="background: rgba(255,100,100,0.2); border: 1px solid rgba(255,100,100,0.4); border-radius: 6px; padding: 3px 6px; font-size: 0.6em;">🐛 Debug</span>
+                            <span style="color: rgba(255,255,255,0.3); font-size: 0.65em;">→</span>
+                            <span style="background: rgba(100,255,100,0.2); border: 1px solid rgba(100,255,100,0.4); border-radius: 6px; padding: 3px 6px; font-size: 0.6em;">✅ App</span>
+                        </div>
+                        <p style="font-size: 0.6em; color: rgba(255,150,150,0.6); margin-top: 3px;">Months to Years</p>
+                    </div>
+                    <!-- Vibe Coding -->
+                    <div style="text-align: center; flex: 1; max-width: 320px;">
+                        <p style="font-size: 0.65em; color: rgba(100,255,150,0.8); margin-bottom: 4px; font-weight: 600;">✅ Vibe Coding</p>
+                        <div style="display: flex; align-items: center; justify-content: center; gap: 4px;">
+                            <span style="background: rgba(100,200,255,0.2); border: 1px solid rgba(100,200,255,0.4); border-radius: 6px; padding: 4px 8px; font-size: 0.65em;">💡 Idea</span>
+                            <span style="color: rgba(255,255,255,0.3); font-size: 0.7em;">→</span>
+                            <span style="background: rgba(100,200,255,0.2); border: 1px solid rgba(100,200,255,0.4); border-radius: 6px; padding: 4px 8px; font-size: 0.65em;">💬 Describe</span>
+                            <span style="color: rgba(255,255,255,0.3); font-size: 0.7em;">→</span>
+                            <span style="background: rgba(150,100,255,0.3); border: 1px solid rgba(150,100,255,0.5); border-radius: 6px; padding: 4px 8px; font-size: 0.65em;">🤖 AI</span>
+                            <span style="color: rgba(255,255,255,0.3); font-size: 0.7em;">→</span>
+                            <span style="background: rgba(100,255,100,0.2); border: 1px solid rgba(100,255,100,0.4); border-radius: 6px; padding: 4px 8px; font-size: 0.65em;">✅ App</span>
+                        </div>
+                        <p style="font-size: 0.6em; color: rgba(100,255,150,0.6); margin-top: 3px;">Minutes to Hours</p>
+                    </div>
+                </div>
+
+                <!-- Two Column: Definition & Tools -->
+                <div class="two-col" style="gap: 12px;">
+                    <div>
+                        <div class="glass-card" style="padding: 8px 10px; background: rgba(255,255,255,0.03);">
+                            <h3 style="color: var(--accent-blue); margin-bottom: 6px; font-size: 0.85em;">📖 Karpathy's Definition</h3>
+                            <p style="font-size: 0.7em; line-height: 1.4; margin: 0; font-style: italic; color: rgba(255,255,255,0.8);">"You fully give in to the vibes, embrace exponentials, and forget that the code even exists... I just see stuff, say stuff, run stuff, and copy paste stuff."</p>
+                        </div>
+                        <div style="margin-top: 6px; padding: 6px 10px; background: rgba(255,255,255,0.03); border-radius: 8px;">
+                            <p style="font-size: 0.75em; margin: 0 0 4px 0;"><strong>🔧 Tools:</strong></p>
+                            <div style="display: flex; flex-wrap: wrap; gap: 4px;">
+                                <span class="pill blue" style="padding: 2px 8px; font-size: 0.65em;">Cursor</span>
+                                <span class="pill purple" style="padding: 2px 8px; font-size: 0.65em;">Claude Code</span>
+                                <span class="pill green" style="padding: 2px 8px; font-size: 0.65em;">Copilot</span>
+                                <span class="pill orange" style="padding: 2px 8px; font-size: 0.65em;">Replit</span>
+                                <span class="pill" style="padding: 2px 8px; font-size: 0.65em; background: rgba(255,255,255,0.1);">v0.dev</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="glass-card purple" style="padding: 8px 10px;">
+                            <h3 style="color: var(--accent-purple); margin-bottom: 6px; font-size: 0.85em;">🏥 Medical Use Cases</h3>
+                            <ul style="font-size: 0.7em; line-height: 1.4; margin: 0;">
+                                <li>Custom patient tracking dashboards</li>
+                                <li>Automated appointment scheduling</li>
+                                <li>Data visualization for research</li>
+                                <li>Patient education apps</li>
+                            </ul>
+                        </div>
+                        <div class="glass-card orange" style="margin-top: 6px; padding: 6px 10px;">
+                            <p style="font-size: 0.7em; margin: 0;"><strong>⚠️ Caveat:</strong> Not for clinical decision systems, EHR integrations, or regulatory-compliant software.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- SLIDE 8: JOB MARKET -->
+            <!-- ============================================ -->
+            <section>
+                <h2>The Job Market <span class="gradient-text">Reality</span></h2>
+                <div class="two-col" style="margin-top: 40px;">
+                    <div>
+                        <div class="glass-card red">
+                            <h4 style="margin-top: 0; color: #f5576c;">📉 The Trend</h4>
+                            <ul style="font-size: 0.95em;">
+                                <li>Many companies reducing <strong>junior hiring</strong></li>
+                                <li><em>"Why hire a junior when AI can do basic tasks?"</em></li>
+                                <li>Entry-level positions shrinking across industries</li>
+                            </ul>
+                        </div>
+                        <div class="glass-card orange">
+                            <h4 style="margin-top: 0; color: var(--accent-orange);">🔄 The Paradox</h4>
+                            <ul style="font-size: 0.95em;">
+                                <li>Seniors still needed (AI can't replace judgment)</li>
+                                <li>But how do juniors <strong>become</strong> seniors?</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="glass-card green">
+                            <h4 style="margin-top: 0; color: var(--accent-green);">🏥 Medicine's Protection</h4>
+                            <ul style="font-size: 0.95em;">
+                                <li><strong>Licensing requirements</strong> — can't be automated away</li>
+                                <li><strong>Physical patient contact</strong> — AI can't examine</li>
+                                <li><strong>Legal liability</strong> — human responsibility required</li>
+                                <li><strong>Trust relationship</strong> — patients need human connection</li>
+                            </ul>
+                            <p style="margin-top: 15px; color: var(--accent-green);">Medicine is <strong>partially protected</strong>, but not immune</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- SLIDE 9: ALPHAFOLD INTRO -->
+            <!-- ============================================ -->
+            <section class="slide-alphafold">
+                <div style="text-align: center;">
+                    <span class="nobel-badge" style="padding: 8px 20px; font-size: 1em;">🏅 2024 Nobel Prize in Chemistry</span>
+                </div>
+                <h2 style="text-align: center; margin-top: 10px;"><span class="gradient-text">AlphaFold</span></h2>
+                <p style="text-align: center; color: rgba(255,255,255,0.7); font-size: 0.8em; margin-bottom: 8px;">The AI That Solved a 50-Year Grand Challenge</p>
+
+                <!-- Three Nobel Laureates - Composite Photo -->
+                <div style="display: flex; justify-content: center; margin-bottom: 6px;">
+                    <div style="border-radius: 10px; overflow: hidden; border: 2px solid gold; box-shadow: 0 0 15px rgba(255,215,0,0.3);">
+                        <img src="nobel_winners.jpg" alt="2024 Nobel Prize Winners: David Baker, Demis Hassabis, John Jumper" style="width: 320px; height: auto; display: block;">
+                    </div>
+                </div>
+                <!-- Names below photo -->
+                <div style="display: flex; justify-content: center; gap: 35px; margin-bottom: 8px;">
+                    <div style="text-align: center;">
+                        <p style="margin: 0; font-size: 0.65em; font-weight: 600;">David Baker</p>
+                        <p style="margin: 1px 0 0 0; font-size: 0.45em; color: rgba(255,255,255,0.6);">U. of Washington</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <p style="margin: 0; font-size: 0.65em; font-weight: 600;">Demis Hassabis</p>
+                        <p style="margin: 1px 0 0 0; font-size: 0.45em; color: rgba(255,255,255,0.6);">CEO, Google DeepMind</p>
+                    </div>
+                    <div style="text-align: center;">
+                        <p style="margin: 0; font-size: 0.65em; font-weight: 600;">John Jumper</p>
+                        <p style="margin: 1px 0 0 0; font-size: 0.45em; color: rgba(255,255,255,0.6);">Director, Google DeepMind</p>
+                    </div>
+                </div>
+
+                <!-- Key Points -->
+                <div style="display: flex; justify-content: center; gap: 12px;">
+                    <div class="glass-card" style="padding: 8px 12px; flex: 1; max-width: 260px;">
+                        <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 5px;">
+                            <div style="width: 24px; height: 24px; background: linear-gradient(135deg, #4285f4, #34a853); border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 0.8em;">🧠</div>
+                            <span style="font-size: 0.8em; font-weight: 600;">AlphaFold (Hassabis & Jumper)</span>
+                        </div>
+                        <p style="font-size: 0.7em; margin: 0; color: rgba(255,255,255,0.8);">Predicted 3D structure of proteins from amino acid sequences</p>
+                    </div>
+                    <div class="glass-card" style="padding: 8px 12px; flex: 1; max-width: 260px;">
+                        <div style="display: flex; align-items: center; gap: 6px; margin-bottom: 5px;">
+                            <div style="width: 24px; height: 24px; background: linear-gradient(135deg, #9c27b0, #673ab7); border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 0.8em;">🔬</div>
+                            <span style="font-size: 0.8em; font-weight: 600;">Rosetta (Baker)</span>
+                        </div>
+                        <p style="font-size: 0.7em; margin: 0; color: rgba(255,255,255,0.8);">Designed entirely new proteins that never existed in nature</p>
+                    </div>
+                </div>
+
+                <p class="small-text" style="text-align: center; margin-top: 6px;">
+                    Photo: <a href="https://www.nature.com/articles/d41586-024-03214-7" style="color: var(--accent-blue);">Nature 2024</a> |
+                    <a href="https://www.nobelprize.org/prizes/chemistry/2024/press-release/" style="color: var(--accent-blue);">Nobel Prize</a>
+                </p>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- SLIDE 8: PROTEIN FOLDING PROBLEM -->
+            <!-- ============================================ -->
+            <section>
+                <h2>The <span class="gradient-text pink">Protein Folding</span> Problem</h2>
+                <div class="two-col" style="margin-top: 15px; gap: 15px;">
+                    <div>
+                        <div class="glass-card blue" style="padding: 10px 12px;">
+                            <h4 style="margin: 0 0 8px 0; font-size: 0.95em;">🧬 What are proteins?</h4>
+                            <p style="margin: 0; font-size: 0.85em;">Microscopic machines that drive <strong>every process</strong> in living cells.</p>
+                        </div>
+                        <ul class="" style="margin-top: 10px; font-size: 0.85em; line-height: 1.5;">
+                            <li>Chains of amino acids that <strong>fold into 3D shapes</strong></li>
+                            <li>Shape determines function <em>(lock and key)</em></li>
+                            <li class="">Proteins fold correctly in <strong style="color: var(--accent-green);">milliseconds</strong></li>
+                        </ul>
+                    </div>
+                    <div class="">
+                        <div class="glass-card" style="border-left: 4px solid #f5576c; padding: 10px 12px;">
+                            <h4 style="margin: 0 0 8px 0; color: #f5576c; font-size: 0.95em;">⚠️ The Challenge</h4>
+                            <p style="margin: 0; font-size: 0.85em;">A typical protein could fold into:</p>
+                            <p class="big-number" style="text-align: center; font-size: 2.5em; margin: 10px 0;">10<sup style="font-size: 0.5em;">300</sup></p>
+                            <p style="text-align: center; margin: 0; font-size: 0.8em;">possible shapes — checking each would take longer than the age of the universe</p>
+                        </div>
+                    </div>
+                </div>
+                <p class="small-text" style="margin-top: 12px;">
+                    Source: <a href="https://theconversation.com/machine-learning-cracked-the-protein-folding-problem-and-won-the-2024-nobel-prize-in-chemistry-240937" style="color: var(--accent-blue);">The Conversation</a>
+                </p>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- SLIDE 9: 3D PROTEIN VISUALIZATION -->
+            <!-- ============================================ -->
+            <section>
+                <h2 style="margin-bottom: 5px;"><span class="gradient-text">3D Protein</span> Structure Visualization</h2>
+                <p style="color: rgba(255,255,255,0.7); font-size: 0.8em; margin-bottom: 5px;">AlphaFold predicts these complex 3D structures • Human Hemoglobin (PDB: 1A3N) • Drag to rotate, scroll to zoom</p>
+
+                <div id="proteinViewer" style="width: 100%; height: 520px; border-radius: 10px; overflow: hidden; border: 1px solid var(--glass-border); background: #fff;"></div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- SLIDE 10: ALPHAFOLD BREAKTHROUGH -->
+            <!-- ============================================ -->
+            <section>
+                <h2>AlphaFold's <span class="gradient-text green">Breakthrough</span></h2>
+                <div class="timeline" style="margin-top: 40px; margin-left: 50px;">
+                    <div class="timeline-item">
+                        <div class="timeline-year">2018</div>
+                        <div>AlphaFold 1 enters CASP13 competition, shows promise</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2020</div>
+                        <div><strong style="color: var(--accent-green);">AlphaFold 2 achieves >90% accuracy</strong> at CASP14 — "solved"</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2021</div>
+                        <div>AlphaFold Protein Database launched (350,000 structures)</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2022</div>
+                        <div><strong style="color: var(--accent-blue);">200+ million proteins predicted</strong> — nearly all known proteins</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-year">2024</div>
+                        <div><span class="nobel-badge" style="font-size: 0.8em;">🏅 Nobel Prize in Chemistry</span></div>
+                    </div>
+                </div>
+
+                <div class="quote" style="margin-top: 30px;">
+                    "A stunning advance on the protein folding problem."
+                    <div class="quote-author">— Venki Ramakrishnan, Nobel Laureate</div>
+                </div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- SLIDE 11: SPEED COMPARISON -->
+            <!-- ============================================ -->
+            <section>
+                <h2>Speed: <span class="gradient-text">Years</span> to <span class="gradient-text green">Minutes</span></h2>
+                <div class="comparison-grid" style="margin-top: 40px;">
+                    <div class="glass-card red">
+                        <h3 style="margin-top: 0; color: #f5576c;">❌ Traditional Method</h3>
+                        <h4>X-ray Crystallography</h4>
+                        <div class="big-number" style="background: linear-gradient(135deg, #f5576c 0%, #ff8a5c 100%); -webkit-background-clip: text;">Months-Years</div>
+                        <p style="color: rgba(255,255,255,0.7);">per protein structure</p>
+                        <ul style="font-size: 0.85em; color: rgba(255,255,255,0.6);">
+                            <li>Requires crystallization</li>
+                            <li>Expensive equipment</li>
+                            <li>Expert technicians</li>
+                            <li>Many proteins can't be crystallized</li>
+                        </ul>
+                    </div>
+                    <div class="glass-card green">
+                        <h3 style="margin-top: 0; color: var(--accent-green);">✓ AlphaFold</h3>
+                        <h4>AI Prediction</h4>
+                        <div class="big-number">Minutes</div>
+                        <p style="color: rgba(255,255,255,0.7);">per protein structure</p>
+                        <ul style="font-size: 0.85em; color: rgba(255,255,255,0.6);">
+                            <li>Just needs amino acid sequence</li>
+                            <li>Free and open access</li>
+                            <li>Works for almost all proteins</li>
+                            <li>90%+ accuracy for most proteins</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="" style="text-align: center; margin-top: 30px; font-size: 1.2em;">
+                    <strong style="color: var(--accent-blue);">200 million proteins predicted</strong> = hundreds of millions of years of traditional work
+                </p>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- SLIDE 12: GLOBAL IMPACT -->
+            <!-- ============================================ -->
+            <section>
+                <h2>AlphaFold's <span class="gradient-text">Global Impact</span></h2>
+                <div class="stats-grid" style="margin-top: 40px;">
+                    <div class="stat-card">
+                        <div class="stat-number">3M+</div>
+                        <div class="stat-label">Researchers Using AlphaFold</div>
+                        <div class="progress-bar"><div class="progress-fill blue" style="width: 100%;"></div></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">190+</div>
+                        <div class="stat-label">Countries</div>
+                        <div class="progress-bar"><div class="progress-fill green" style="width: 95%;"></div></div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">1M+</div>
+                        <div class="stat-label">Users in Low/Middle-Income Countries</div>
+                        <div class="progress-bar"><div class="progress-fill pink" style="width: 33%;"></div></div>
+                    </div>
+                </div>
+                <div class="stats-grid" style="margin-top: 20px;">
+                    <div class="stat-card">
+                        <div class="stat-number">200M+</div>
+                        <div class="stat-label">Proteins Predicted</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">30%+</div>
+                        <div class="stat-label">Research Focused on Disease</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">$0</div>
+                        <div class="stat-label">Cost to Access</div>
+                    </div>
+                </div>
+                <div class="glass-card green" style="text-align: center; margin-top: 30px;">
+                    <strong>🌍 Free and open access — democratizing science globally</strong>
+                </div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- SLIDE 13: MEDICAL APPLICATIONS -->
+            <!-- ============================================ -->
+            <section>
+                <h2>Real <span class="gradient-text">Medical Applications</span></h2>
+                <div class="two-col" style="margin-top: 30px;">
+                    <div>
+                        <div class="glass-card green">
+                            <h4 style="margin-top: 0;">🦟 Malaria Vaccine Development</h4>
+                            <p>Oxford researchers couldn't determine structure of key parasite protein <strong>for years</strong>.</p>
+                            <p style="color: var(--accent-green);">AlphaFold solved it → enabling vaccine candidate <strong>Pfs48/45</strong></p>
+                            <p class="small-text">Malaria kills 600,000+ people annually</p>
+                        </div>
+                        <div class="glass-card blue">
+                            <h4 style="margin-top: 0;">🦠 Antibiotic Resistance</h4>
+                            <p>Identified bacterial protein structure in <strong style="color: var(--accent-blue);">30 minutes</strong></p>
+                            <p class="small-text">Previously took <strong>10 years</strong> using traditional methods</p>
+                            <p class="small-text">CDC: Antibiotic resistance costs US $55 billion/year</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="glass-card pink">
+                            <h4 style="margin-top: 0;">🎗️ Cancer Research</h4>
+                            <p>Understanding oncogenic protein structures</p>
+                            <p>Identifying <strong>hidden binding sites</strong> for targeted therapies</p>
+                            <p class="small-text">Enabling precision medicine approaches</p>
+                        </div>
+                        <div class="glass-card orange">
+                            <h4 style="margin-top: 0;">🧪 Neglected Diseases</h4>
+                            <p>Free access enables research on diseases affecting <strong>poorest populations</strong></p>
+                            <p class="small-text">Chagas disease, leishmaniasis, sleeping sickness...</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- SLIDE 14: ALPHAMISSENSE -->
+            <!-- ============================================ -->
+            <section>
+                <h2><span class="gradient-text">AlphaMissense</span></h2>
+                <h3 style="color: rgba(255,255,255,0.7); font-weight: 300;">Diagnosing Rare Genetic Diseases</h3>
+
+                <div class="two-col" style="margin-top: 30px;">
+                    <div>
+                        <div class="glass-card red">
+                            <h4 style="margin-top: 0; color: #f5576c;">⚠️ The Problem</h4>
+                            <p><strong>4 million</strong> missense variants observed in humans</p>
+                            <div class="progress-bar" style="margin: 20px 0;">
+                                <div class="progress-fill blue" style="width: 2%;"></div>
+                            </div>
+                            <p>Only <strong style="color: #f5576c;">2%</strong> classified by experts</p>
+                            <p><strong>98%</strong> are "Variants of Unknown Significance" (VUS)</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="glass-card green">
+                            <h4 style="margin-top: 0; color: var(--accent-green);">✓ AlphaMissense Solution</h4>
+                            <div style="display: flex; justify-content: space-around; margin: 20px 0;">
+                                <div style="text-align: center;">
+                                    <div class="stat-number" style="font-size: 2em;">89%</div>
+                                    <div class="small-text">Variants Classified</div>
+                                </div>
+                                <div style="text-align: center;">
+                                    <div class="stat-number" style="font-size: 2em;">90%</div>
+                                    <div class="small-text">Precision</div>
+                                </div>
+                            </div>
+                            <p>Validated with <strong>Genomics England</strong></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-card blue" style="margin-top: 15px; padding: 12px 15px;">
+                    <strong>🏥 Clinical Impact - Rare Disease Examples:</strong>
+                    <div style="display: flex; gap: 15px; margin-top: 10px; font-size: 0.85em;">
+                        <div style="flex: 1;">
+                            <span style="color: var(--accent-orange);">🧬 Cystic Fibrosis</span> - CFTR gene variants
+                        </div>
+                        <div style="flex: 1;">
+                            <span style="color: var(--accent-pink);">🫀 Cardiomyopathy</span> - MYH7 mutations
+                        </div>
+                        <div style="flex: 1;">
+                            <span style="color: var(--accent-green);">🧠 Epilepsy</span> - SCN1A variants
+                        </div>
+                    </div>
+                    <p style="margin: 8px 0 0 0; font-size: 0.85em; color: rgba(255,255,255,0.7);">Earlier diagnosis → Earlier treatment → Better outcomes</p>
+                </div>
+                <p class="small-text">
+                    Sources: <a href="https://www.science.org/doi/10.1126/science.adg7492" style="color: var(--accent-blue);">Science</a>,
+                    <a href="https://www.nature.com/articles/d41586-023-02943-5" style="color: var(--accent-blue);">Nature</a>
+                </p>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- SLIDE 15: ALPHAFOLD 3 -->
+            <!-- ============================================ -->
+            <section>
+                <h2>AlphaFold 3: <span class="gradient-text green">The Future</span></h2>
+                <div class="glass-card blue" style="margin-top: 30px;">
+                    <h4 style="margin-top: 0;">🚀 Expanded Beyond Proteins</h4>
+                    <p>Now predicts interactions with <strong>DNA</strong>, <strong>RNA</strong>, and <strong>small molecules</strong></p>
+                    <div style="display: flex; gap: 20px; margin-top: 20px;">
+                        <span class="pill blue">Proteins</span>
+                        <span class="pill green">DNA</span>
+                        <span class="pill pink">RNA</span>
+                        <span class="pill orange">Ligands</span>
+                        <span class="pill" style="background: rgba(255,255,255,0.1);">Antibodies</span>
+                    </div>
+                </div>
+
+                <div class="comparison-grid" style="margin-top: 30px;">
+                    <div class="glass-card">
+                        <h4 style="margin-top: 0;">Traditional Drug Development</h4>
+                        <div class="big-number" style="font-size: 2.5em;">12-15 years</div>
+                        <p style="color: rgba(255,255,255,0.7);">$2.5 billion average cost</p>
+                        <p class="small-text">40-65% Phase I success rate</p>
+                    </div>
+                    <div class="glass-card green">
+                        <h4 style="margin-top: 0; color: var(--accent-green);">AI-Assisted Development</h4>
+                        <div class="big-number" style="font-size: 2.5em;">Faster</div>
+                        <p style="color: var(--accent-green);">Significantly reduced cost</p>
+                        <p class="small-text"><strong>90%</strong> Phase I success rate</p>
+                    </div>
+                </div>
+
+                <div class="feature-row" style="margin-top: 20px;">
+                    <div class="feature-card">
+                        <div class="stat-number" style="font-size: 1.8em;">$3.3B</div>
+                        <p class="small-text">2024 AI Drug Discovery Funding</p>
+                    </div>
+                    <div class="feature-card">
+                        <div style="color: var(--accent-green); font-size: 1.8em; font-weight: 700;">2025</div>
+                        <p class="small-text">FDA AI Guidance Released</p>
+                    </div>
+                    <div class="feature-card">
+                        <div style="color: var(--accent-blue); font-size: 1.8em; font-weight: 700;">First</div>
+                        <p class="small-text">AI-designed drug in trials (Isomorphic Labs)</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- SLIDE 16: ALPHAFOLD LIMITATIONS -->
+            <!-- ============================================ -->
+            <section>
+                <h2>⚠️ AlphaFold <span class="gradient-text pink">Limitations</span></h2>
+                <h3 style="color: rgba(255,255,255,0.6); font-weight: 300;">Honest Assessment</h3>
+
+                <div class="two-col" style="margin-top: 30px;">
+                    <div>
+                        <ul>
+                            <li class=""><strong style="color: #f5576c;">Static predictions only</strong><br><span class="small-text">Cannot predict protein dynamics/movement</span></li>
+                            <li class=""><strong style="color: #f5576c;">Accuracy varies</strong><br><span class="small-text">Less reliable for certain protein types</span></li>
+                            <li class=""><strong style="color: #f5576c;">Small molecule docking</strong><br><span class="small-text">Still needs improvement</span></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul>
+                            <li class=""><strong style="color: #f5576c;">Hallucinations</strong><br><span class="small-text">Can produce confident but incorrect predictions</span></li>
+                            <li class=""><strong style="color: #f5576c;">Lab validation required</strong><br><span class="small-text">Predictions ≠ experimental proof</span></li>
+                            <li class=""><strong style="color: #f5576c;">Clinical translation gap</strong><br><span class="small-text">Structure ≠ therapeutic success</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="glass-card red" style="margin-top: 30px; text-align: center;">
+                    <h4 style="margin: 0; color: #f5576c;">🔬 Critical Point</h4>
+                    <p style="margin-bottom: 0;">Understanding structure ≠ understanding function</p>
+                </div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- SLIDE 17: GENERAL AI LIMITATIONS -->
+            <!-- ============================================ -->
+            <section>
+                <h2>⚠️ Critical Limitations of <span class="gradient-text pink">AI</span></h2>
+                <div class="stats-grid" style="margin-top: 40px;">
+                    <div class="stat-card" style="border-top: 3px solid #f5576c;">
+                        <div class="feature-icon">🎭</div>
+                        <strong>Hallucinations</strong>
+                        <p class="small-text">AI confidently states false information</p>
+                    </div>
+                    <div class="stat-card" style="border-top: 3px solid #f5576c;">
+                        <div class="feature-icon">⏰</div>
+                        <strong>No Real-Time Knowledge</strong>
+                        <p class="small-text">Training data has cutoff dates</p>
+                    </div>
+                    <div class="stat-card" style="border-top: 3px solid #f5576c;">
+                        <div class="feature-icon">🧠</div>
+                        <strong>No True Understanding</strong>
+                        <p class="small-text">Pattern matching, not reasoning</p>
+                    </div>
+                    <div class="stat-card" style="border-top: 3px solid #f5576c;">
+                        <div class="feature-icon">👨‍⚕️</div>
+                        <strong>Cannot Examine Patients</strong>
+                        <p class="small-text">No physical assessment capability</p>
+                    </div>
+                    <div class="stat-card" style="border-top: 3px solid #f5576c;">
+                        <div class="feature-icon">⚖️</div>
+                        <strong>Legal/Liability Unclear</strong>
+                        <p class="small-text">Who's responsible for AI errors?</p>
+                    </div>
+                    <div class="stat-card" style="border-top: 3px solid #f5576c;">
+                        <div class="feature-icon">🔒</div>
+                        <strong>Privacy Concerns</strong>
+                        <p class="small-text">Patient data in AI systems</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- SLIDE 18: HONEST ASSESSMENT -->
+            <!-- ============================================ -->
+            <section>
+                <h2>The <span class="gradient-text">Honest Assessment</span></h2>
+                <div class="comparison-grid" style="margin-top: 40px;">
+                    <div class="comparison-card good">
+                        <h3 style="margin-top: 0; color: var(--accent-green);">✓ AI is Good At</h3>
+                        <ul>
+                            <li><strong>Speed & Scale</strong><br><span class="small-text">Process millions of data points instantly</span></li>
+                            <li><strong>Availability</strong><br><span class="small-text">Never tired, 24/7 available</span></li>
+                            <li><strong>Consistency</strong><br><span class="small-text">No bad days, no emotional variance</span></li>
+                            <li><strong>Information Processing</strong><br><span class="small-text">Synthesize vast knowledge bases</span></li>
+                        </ul>
+                    </div>
+                    <div class="comparison-card bad">
+                        <h3 style="margin-top: 0; color: #f5576c;">✗ AI is Bad At</h3>
+                        <ul>
+                            <li><strong>Novel Situations</strong><br><span class="small-text">Outside training distribution</span></li>
+                            <li><strong>Ethical Judgment</strong><br><span class="small-text">Complex moral decisions</span></li>
+                            <li><strong>Empathy & Connection</strong><br><span class="small-text">Human emotional needs</span></li>
+                            <li><strong>Accountability</strong><br><span class="small-text">Cannot be held responsible</span></li>
+                            <li><strong>Physical Interaction</strong><br><span class="small-text">Real-world examination</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- SLIDE 20: RECOMMENDATIONS -->
+            <!-- ============================================ -->
+            <section>
+                <h2>Practical <span class="gradient-text green">Recommendations</span></h2>
+                <div class="stats-grid" style="margin-top: 15px; grid-template-columns: repeat(3, 1fr); gap: 8px;">
+                    <div class="stat-card" style="padding: 10px;">
+                        <div style="font-size: 1.3em;">🧪</div>
+                        <strong style="font-size: 0.85em;">1. Try It Yourself</strong>
+                        <p class="small-text" style="margin: 3px 0 0;">Experiment with AI tools</p>
+                    </div>
+                    <div class="stat-card" style="padding: 10px;">
+                        <div style="font-size: 1.3em;">✅</div>
+                        <strong style="font-size: 0.85em;">2. Verify Everything</strong>
+                        <p class="small-text" style="margin: 3px 0 0;">Never trust AI without checking</p>
+                    </div>
+                    <div class="stat-card" style="padding: 10px;">
+                        <div style="font-size: 1.3em;">🤝</div>
+                        <strong style="font-size: 0.85em;">3. Assistant, Not Replacement</strong>
+                        <p class="small-text" style="margin: 3px 0 0;">Second opinion, not first</p>
+                    </div>
+                    <div class="stat-card" style="padding: 10px;">
+                        <div style="font-size: 1.3em;">📰</div>
+                        <strong style="font-size: 0.85em;">4. Stay Informed</strong>
+                        <p class="small-text" style="margin: 3px 0 0;">Field changes monthly</p>
+                    </div>
+                    <div class="stat-card" style="padding: 10px;">
+                        <div style="font-size: 1.3em;">🔐</div>
+                        <strong style="font-size: 0.85em;">5. Protect Patient Data</strong>
+                        <p class="small-text" style="margin: 3px 0 0;">Never input identifiable info</p>
+                    </div>
+                    <div class="stat-card" style="padding: 10px;">
+                        <div style="font-size: 1.3em;">🎯</div>
+                        <strong style="font-size: 0.85em;">6. Be Specific</strong>
+                        <p class="small-text" style="margin: 3px 0 0;">Better prompts = better results</p>
+                    </div>
+                </div>
+                <div class="glass-card blue" style="text-align: center; margin-top: 15px; padding: 10px;">
+                    <strong>Popular AI tools:</strong>
+                    <span class="pill blue" style="padding: 4px 12px; margin: 3px;">chat.openai.com</span>
+                    <span class="pill purple" style="background: rgba(102, 126, 234, 0.2); color: #667eea; padding: 4px 12px; margin: 3px;">claude.ai</span>
+                    <span class="pill green" style="padding: 4px 12px; margin: 3px;">gemini.google.com</span>
+                    <span class="pill orange" style="padding: 4px 12px; margin: 3px;">perplexity.ai</span>
+                </div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- SLIDE 21: BOTTOM LINE -->
+            <!-- ============================================ -->
+            <section class="slide-alphafold">
+                <div class="bg-shapes">
+                    <div class="bg-shape blue"></div>
+                    <div class="bg-shape purple"></div>
+                </div>
+                <h2 style="text-align: center;">The <span class="gradient-text">Bottom Line</span></h2>
+
+                <div style="max-width: 800px; margin: 15px auto;">
+                    <ul style="font-size: 1.1em; line-height: 1.5;">
+                        <li class="">AI is a powerful tool — <strong>like the calculator was</strong></li>
+                        <li class="">Those who refused calculators didn't stop math from progressing</li>
+                        <li class="">Doctors who learn AI will be <strong style="color: var(--accent-green);">more effective</strong></li>
+                        <li class="">Doctors who ignore AI won't disappear, but will <strong style="color: var(--accent-orange);">work harder</strong></li>
+                    </ul>
+                </div>
+
+                <div class="glass-card" style="text-align: center; margin-top: 15px; padding: 12px; background: linear-gradient(135deg, rgba(79, 172, 254, 0.2) 0%, rgba(102, 126, 234, 0.2) 100%);">
+                    <h3 style="margin: 0; color: var(--accent-blue); font-size: 1.1em;">🎯 The Goal</h3>
+                    <p style="font-size: 1.3em; margin: 10px 0 0; font-weight: 600;">
+                        <span class="gradient-text">Augmented Intelligence</span>, not Artificial Replacement
+                    </p>
+                </div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- SLIDE: SIMULATION CONCLUSION -->
+            <!-- ============================================ -->
+            <section class="center">
+                <h1 style="font-size: 3.5em; margin-bottom: 0;">This World Can Be Simulated.</h1>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- SLIDE 23: THANK YOU -->
+            <!-- ============================================ -->
+            <section class="center">
+                <div class="bg-shapes">
+                    <div class="bg-shape blue"></div>
+                    <div class="bg-shape purple"></div>
+                </div>
+                <h1 style="font-size: 2.5em;">Thank you for listening.</h1>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Navigation Controls -->
+    <div id="nav-controls">
+        <button id="nav-prev" onclick="Reveal.prev()" title="Previous Slide">◀</button>
+        <button id="nav-menu" onclick="toggleSlideMenu()" title="Slide Menu">☰</button>
+        <button id="nav-next" onclick="Reveal.next()" title="Next Slide">▶</button>
+    </div>
+
+    <!-- Slide Menu Overlay -->
+    <div id="slide-menu" class="slide-menu-hidden">
+        <div id="slide-menu-content">
+            <div class="menu-header">
+                <h3>Jump to Slide</h3>
+                <button onclick="toggleSlideMenu()" class="menu-close">✕</button>
+            </div>
+            <div class="menu-sections">
+                <div class="menu-section">
+                    <h4>Introduction</h4>
+                    <button onclick="goToSlide(0)">1. Title</button>
+                    <button onclick="goToSlide(1)">2. Simulation?</button>
+                    <button onclick="goToSlide(2)">3. Hidden Figures</button>
+                    <button onclick="goToSlide(3)">4. What is AI</button>
+                    <button onclick="goToSlide(4)">5. AI vs AGI</button>
+                    <button onclick="goToSlide(5)">6. AI Tools 2026</button>
+                    <button onclick="goToSlide(6)">7. What AI Can Do</button>
+                    <button onclick="goToSlide(7)">8. Medical AI Apps</button>
+                    <button onclick="goToSlide(8)">9. NotebookLM</button>
+                    <button onclick="goToSlide(9)">10. Vibe Coding</button>
+                    <button onclick="goToSlide(10)">11. Job Market</button>
+                </div>
+                <div class="menu-section">
+                    <h4>AlphaFold Deep Dive</h4>
+                    <button onclick="goToSlide(11)">12. AlphaFold Intro</button>
+                    <button onclick="goToSlide(12)">13. Protein Folding</button>
+                    <button onclick="goToSlide(13)">14. 3D Visualization</button>
+                    <button onclick="goToSlide(14)">15. Breakthrough</button>
+                    <button onclick="goToSlide(15)">16. Speed Comparison</button>
+                    <button onclick="goToSlide(16)">17. Global Impact</button>
+                    <button onclick="goToSlide(17)">18. Medical Apps</button>
+                    <button onclick="goToSlide(18)">19. AlphaMissense</button>
+                    <button onclick="goToSlide(19)">20. AlphaFold 3</button>
+                    <button onclick="goToSlide(20)">21. AF Limitations</button>
+                </div>
+                <div class="menu-section">
+                    <h4>Limitations & Reality</h4>
+                    <button onclick="goToSlide(21)">22. AI Limitations</button>
+                    <button onclick="goToSlide(22)">23. Honest Assessment</button>
+                </div>
+                <div class="menu-section">
+                    <h4>Closing</h4>
+                    <button onclick="goToSlide(23)">24. Recommendations</button>
+                    <button onclick="goToSlide(24)">25. Bottom Line</button>
+                    <button onclick="goToSlide(25)">26. Can Be Simulated</button>
+                    <button onclick="goToSlide(26)">27. Thank You</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* Navigation Controls */
+        #nav-controls {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 100;
+        }
+
+        #nav-controls button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(79, 172, 254, 0.3);
+            color: white;
+            font-size: 1.2em;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        #nav-controls button:hover {
+            background: rgba(79, 172, 254, 0.6);
+            transform: scale(1.1);
+        }
+
+        #nav-menu {
+            background: rgba(102, 126, 234, 0.4) !important;
+        }
+
+        /* Slide Menu Overlay */
+        #slide-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(20px);
+            z-index: 200;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .slide-menu-hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        #slide-menu-content {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 900px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .menu-header h3 {
+            margin: 0;
+            color: #4facfe;
+            font-size: 1.5em;
+        }
+
+        .menu-close {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(245, 87, 108, 0.3);
+            color: white;
+            font-size: 1.2em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .menu-close:hover {
+            background: rgba(245, 87, 108, 0.6);
+        }
+
+        .menu-sections {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .menu-section h4 {
+            color: #43e97b;
+            margin: 0 0 12px 0;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .menu-section button {
+            display: block;
+            width: 100%;
+            padding: 10px 12px;
+            margin-bottom: 8px;
+            border: none;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.85em;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .menu-section button:hover {
+            background: rgba(79, 172, 254, 0.3);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .menu-sections {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .menu-sections {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/markdown/markdown.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/highlight/highlight.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/zoom/zoom.js"></script>
+    <script>
+        // Initialize Reveal.js
+        Reveal.initialize({
+            hash: true,
+            slideNumber: 'c/t',
+            progress: true,
+            center: false,
+            transition: 'slide',
+            backgroundTransition: 'fade',
+            margin: 0.04,
+            minScale: 0.2,
+            maxScale: 1.0,
+            width: 1280,
+            height: 720,
+            plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom ]
+        });
+
+        // Initialize Mol* 3D Protein Viewer when slide is shown
+        Reveal.on('slidechanged', event => {
+            if (event.currentSlide.querySelector('#proteinViewer')) {
+                initMolstar();
+            }
+        });
+
+        // Also initialize if starting on that slide
+        if (document.querySelector('#proteinViewer')) {
+            setTimeout(initMolstar, 1000);
+        }
+
+        function initMolstar() {
+            const viewerContainer = document.getElementById('proteinViewer');
+            if (viewerContainer && !viewerContainer.hasChildNodes()) {
+                // Create PDBe Molstar viewer
+                const viewerInstance = new PDBeMolstarPlugin();
+
+                const options = {
+                    moleculeId: '1a3n',  // Human Hemoglobin
+                    hideControls: true,
+                    bgColor: {r:255, g:255, b:255},
+                    lighting: 'glossy',
+                    pdbeUrl: 'https://www.ebi.ac.uk/pdbe/',
+                    loadMaps: false,
+                    validationAnnotation: false,
+                    domainAnnotation: false,
+                    lowPrecisionCoords: true,
+                    expanded: false,
+                    hideCanvasControls: ['selection', 'animation', 'expand', 'controlToggle', 'controlInfo'],
+                    landscape: true,
+                    selectInteraction: false
+                };
+
+                viewerInstance.render(viewerContainer, options);
+            }
+        }
+
+        // Navigation Controls
+        function toggleSlideMenu() {
+            const menu = document.getElementById('slide-menu');
+            menu.classList.toggle('slide-menu-hidden');
+        }
+
+        function goToSlide(index) {
+            Reveal.slide(index);
+            toggleSlideMenu();
+        }
+
+        // Close menu with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                const menu = document.getElementById('slide-menu');
+                if (!menu.classList.contains('slide-menu-hidden')) {
+                    toggleSlideMenu();
+                }
+            }
+        });
+
+        // Close menu when clicking outside
+        document.getElementById('slide-menu').addEventListener('click', function(e) {
+            if (e.target === this) {
+                toggleSlideMenu();
+            }
+        });
+    </script>
+</body>
+</html>
