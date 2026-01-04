@@ -1,79 +1,34 @@
-# Reveal.js Presentation for GitHub Pages
+# AI Before and After
 
-## Quick Start
+A presentation exploring the transformative impact of AI, with focus on AlphaFold and practical applications for medical professionals.
 
-### Local Preview
-Open `index.html` in your browser, or use a local server:
-```bash
-# Python 3
-python -m http.server 8000
+## View Presentation
 
-# Then open http://localhost:8000
-```
+**Live:** [https://ykshim2013.github.io/ai-before-and-after/](https://ykshim2013.github.io/ai-before-and-after/)
 
-### Deploy to GitHub Pages
-1. Create a new GitHub repository
-2. Push this folder to the repository
-3. Go to **Settings → Pages**
-4. Under "Source", select **main branch** and **/ (root)**
-5. Your presentation will be live at `https://yourusername.github.io/repo-name`
+## Topics Covered
 
-## Keyboard Controls
+- The simulation hypothesis and AI's role
+- AI tool landscape (ChatGPT, Claude, Gemini, etc.)
+- User adoption growth and trends
+- AlphaFold: Nobel Prize-winning protein structure prediction
+- Vibe Coding: AI-assisted development
+- Practical recommendations for professionals
+
+## Presentation Controls
 
 | Key | Action |
 |-----|--------|
 | `→` or `Space` | Next slide |
 | `←` | Previous slide |
-| `↓` | Next vertical slide |
-| `↑` | Previous vertical slide |
 | `Esc` or `O` | Overview mode |
-| `S` | Speaker notes (open in new window) |
 | `F` | Fullscreen |
-| `B` or `.` | Pause/blackout |
 
-## Customization
+## Author
 
-### Change Theme
-Edit line 9 in `index.html`:
-```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css">
-```
+YKShim - January 2026
 
-Available themes: `black`, `white`, `league`, `beige`, `sky`, `night`, `serif`, `simple`, `solarized`, `blood`, `moon`, `dracula`
+## Built With
 
-### Add Speaker Notes
-```html
-<section>
-    <h2>Slide Title</h2>
-    <p>Visible content</p>
-    <aside class="notes">
-        Speaker notes go here (press S to view)
-    </aside>
-</section>
-```
-
-### Fragment Animations
-```html
-<ul>
-    <li class="fragment">Appears first</li>
-    <li class="fragment fade-up">Fades up second</li>
-    <li class="fragment highlight-red">Highlights third</li>
-</ul>
-```
-
-### Background Options
-```html
-<!-- Solid color -->
-<section data-background-color="#4a86e8">
-
-<!-- Image -->
-<section data-background-image="image.jpg" data-background-size="cover">
-
-<!-- Gradient -->
-<section data-background-gradient="linear-gradient(to bottom, #283048, #859398)">
-```
-
-## Resources
-- [Reveal.js Documentation](https://revealjs.com/)
-- [Markdown Plugin](https://revealjs.com/markdown/)
-- [Themes Gallery](https://revealjs.com/themes/)
+- [Reveal.js](https://revealjs.com/) - Presentation framework
+- [Claude Code](https://claude.ai/) - AI-assisted development
