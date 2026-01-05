@@ -951,15 +951,30 @@
             </section>
 
             <!-- ============================================ -->
-            <!-- SLIDE 7: NOTEBOOKLM EXAMPLE -->
+            <!-- SLIDE 10: NOTEBOOKLM EXAMPLE + ALPHAFOLD3 PDF -->
             <!-- ============================================ -->
             <section>
                 <h2><span class="gradient-text">NotebookLM</span> Example</h2>
-                <p style="text-align: center; margin-bottom: 10px; color: rgba(255,255,255,0.7); font-size: 0.75em;">Google's AI-powered research assistant</p>
-                <div style="display: flex; justify-content: center; align-items: center; position: relative;">
-                    <img class="fragment fade-out" data-fragment-index="0" src="notebookLM1.png" alt="NotebookLM Example 1" style="max-width: 90%; max-height: 520px; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4);">
-                    <img class="fragment fade-in" data-fragment-index="0" src="notebookLM2.png" alt="NotebookLM Example 2" style="max-width: 90%; max-height: 520px; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4); position: absolute;">
+                <p style="text-align: center; margin-bottom: 10px; color: rgba(255,255,255,0.7); font-size: 0.75em;">Google's AI-powered research assistant • <span style="color: var(--accent-blue);">Click image to browse AlphaFold3 slides</span></p>
+                <div id="imageGallery" onclick="nextGalleryImage(event)" style="display: flex; justify-content: center; align-items: center; position: relative; cursor: pointer;">
+                    <img id="galleryImg0" src="notebookLM1.png" alt="NotebookLM Example" class="gallery-img active" style="max-width: 90%; max-height: 520px; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4); transition: opacity 0.3s ease;">
+                    <img id="galleryImg1" src="alphafold3_page1.png" alt="AlphaFold3 Slide 1" class="gallery-img" style="max-width: 90%; max-height: 520px; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4); position: absolute; opacity: 0; transition: opacity 0.3s ease;">
+                    <img id="galleryImg2" src="alphafold3_page2.png" alt="AlphaFold3 Slide 2" class="gallery-img" style="max-width: 90%; max-height: 520px; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4); position: absolute; opacity: 0; transition: opacity 0.3s ease;">
+                    <img id="galleryImg3" src="alphafold3_page3.png" alt="AlphaFold3 Slide 3" class="gallery-img" style="max-width: 90%; max-height: 520px; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4); position: absolute; opacity: 0; transition: opacity 0.3s ease;">
+                    <img id="galleryImg4" src="alphafold3_page4.png" alt="AlphaFold3 Slide 4" class="gallery-img" style="max-width: 90%; max-height: 520px; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4); position: absolute; opacity: 0; transition: opacity 0.3s ease;">
+                    <img id="galleryImg5" src="alphafold3_page5.png" alt="AlphaFold3 Slide 5" class="gallery-img" style="max-width: 90%; max-height: 520px; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4); position: absolute; opacity: 0; transition: opacity 0.3s ease;">
+                    <img id="galleryImg6" src="alphafold3_page6.png" alt="AlphaFold3 Slide 6" class="gallery-img" style="max-width: 90%; max-height: 520px; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4); position: absolute; opacity: 0; transition: opacity 0.3s ease;">
+                    <img id="galleryImg7" src="alphafold3_page7.png" alt="AlphaFold3 Slide 7" class="gallery-img" style="max-width: 90%; max-height: 520px; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4); position: absolute; opacity: 0; transition: opacity 0.3s ease;">
+                    <img id="galleryImg8" src="alphafold3_page8.png" alt="AlphaFold3 Slide 8" class="gallery-img" style="max-width: 90%; max-height: 520px; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4); position: absolute; opacity: 0; transition: opacity 0.3s ease;">
+                    <img id="galleryImg9" src="alphafold3_page9.png" alt="AlphaFold3 Slide 9" class="gallery-img" style="max-width: 90%; max-height: 520px; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4); position: absolute; opacity: 0; transition: opacity 0.3s ease;">
+                    <img id="galleryImg10" src="alphafold3_page10.png" alt="AlphaFold3 Slide 10" class="gallery-img" style="max-width: 90%; max-height: 520px; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4); position: absolute; opacity: 0; transition: opacity 0.3s ease;">
+                    <img id="galleryImg11" src="alphafold3_page11.png" alt="AlphaFold3 Slide 11" class="gallery-img" style="max-width: 90%; max-height: 520px; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4); position: absolute; opacity: 0; transition: opacity 0.3s ease;">
+                    <img id="galleryImg12" src="alphafold3_page12.png" alt="AlphaFold3 Slide 12" class="gallery-img" style="max-width: 90%; max-height: 520px; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4); position: absolute; opacity: 0; transition: opacity 0.3s ease;">
+                    <img id="galleryImg13" src="alphafold3_page13.png" alt="AlphaFold3 Slide 13" class="gallery-img" style="max-width: 90%; max-height: 520px; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4); position: absolute; opacity: 0; transition: opacity 0.3s ease;">
+                    <img id="galleryImg14" src="alphafold3_page14.png" alt="AlphaFold3 Slide 14" class="gallery-img" style="max-width: 90%; max-height: 520px; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4); position: absolute; opacity: 0; transition: opacity 0.3s ease;">
+                    <img id="galleryImg15" src="alphafold3_page15.png" alt="AlphaFold3 Slide 15" class="gallery-img" style="max-width: 90%; max-height: 520px; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.4); position: absolute; opacity: 0; transition: opacity 0.3s ease;">
                 </div>
+                <p id="galleryCounter" style="text-align: center; margin-top: 10px; color: rgba(255,255,255,0.5); font-size: 0.7em;">1 / 16</p>
             </section>
 
             <!-- ============================================ -->
@@ -1771,6 +1786,40 @@
                 viewerInstance.render(viewerContainer, options);
             }
         }
+
+        // Image Gallery for Slide 10
+        let currentGalleryIndex = 0;
+        const totalGalleryImages = 16;
+
+        function nextGalleryImage(event) {
+            event.stopPropagation(); // Prevent Reveal.js from catching this click
+
+            // Hide current image
+            document.getElementById('galleryImg' + currentGalleryIndex).style.opacity = '0';
+
+            // Move to next image (loop back to start)
+            currentGalleryIndex = (currentGalleryIndex + 1) % totalGalleryImages;
+
+            // Show next image
+            document.getElementById('galleryImg' + currentGalleryIndex).style.opacity = '1';
+
+            // Update counter
+            document.getElementById('galleryCounter').textContent = (currentGalleryIndex + 1) + ' / ' + totalGalleryImages;
+        }
+
+        // Reset gallery when entering slide 10
+        Reveal.on('slidechanged', event => {
+            if (event.indexh === 9) { // Slide 10 (0-indexed)
+                // Reset gallery to first image
+                for (let i = 0; i < totalGalleryImages; i++) {
+                    const img = document.getElementById('galleryImg' + i);
+                    if (img) img.style.opacity = i === 0 ? '1' : '0';
+                }
+                currentGalleryIndex = 0;
+                const counter = document.getElementById('galleryCounter');
+                if (counter) counter.textContent = '1 / ' + totalGalleryImages;
+            }
+        });
 
         // Navigation Controls
         function toggleSlideMenu() {
